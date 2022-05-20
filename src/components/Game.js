@@ -38,17 +38,22 @@ const Game = () => {
   const jumpTo = (step) => () => {
     setStepNumber(step);
     setXisNext(step % 2 === 0);
-    document.querySelectorAll(".square-win").forEach(list => {
+    document.querySelectorAll(".square-win").forEach(list => { // remove winner squares
       list.classList.remove("square-win");
       });
   };
 
   const current = history[stepNumber];
-  const winner = calculateWinner(current.squares);
+  const winner = calculateWinner(current.squares); // winner is Array
 
   let status;
   if (winner) {
-    status = `Winner: ${winner}`;
+    status = `Winner: ${winner[0]}`;
+    // mark winner squares
+    document.getElementById(winner[1]).classList.add("square-win");
+    document.getElementById(winner[2]).classList.add("square-win");
+    document.getElementById(winner[3]).classList.add("square-win");
+
   } else
         if (stepNumber > 8) {
             status = `Dead heat, no winner!`;
