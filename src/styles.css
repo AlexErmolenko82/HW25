@@ -16,6 +16,9 @@ body {
   
   .status {
     margin-bottom: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
   }
   
   .square {
@@ -52,4 +55,5 @@ body {
   
   .square-win {
     background: green;
+    color: white;
   }

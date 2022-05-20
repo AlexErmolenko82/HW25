@@ -48,7 +48,7 @@ const Game = () => {
 
   let status;
   if (winner) {
-    status = `Winner: ${winner[0]}`;
+    status = `Winner: Player ${winner[0]}`;
     // mark winner squares
     document.getElementById(winner[1]).classList.add("square-win");
     document.getElementById(winner[2]).classList.add("square-win");

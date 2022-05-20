@@ -4,7 +4,7 @@ const GameInfo = ( {history, status, jumpTo} ) => {
    
 return (
 <div className="game-info">
-        <div>{status}</div>
+        <div className = "status">{status}</div>
         <ol>
           {history.map((step,  index) => {
             const isStartStep = index === 0;
