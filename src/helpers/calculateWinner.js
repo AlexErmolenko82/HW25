@@ -16,6 +16,7 @@ function calculateWinner(squares) {
         document.getElementById(a).classList.add("square-win");
         document.getElementById(b).classList.add("square-win");
         document.getElementById(c).classList.add("square-win");
+
         return squares[a];
       }
     }

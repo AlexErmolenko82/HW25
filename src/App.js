@@ -1,8 +1,6 @@
-import { useState } from "react";
-import Title from "./components/Title";
+import "./styles.css";
 
-import logo from './logo.svg';
-import './App.css';
+import Game from "./components/Game";
 
 function App() {
   return (
