@@ -52,13 +52,13 @@ const Game = () => {
   let status;
   if (winner?.winner) {
     status = `Winner: Player ${winner.winner}`;
-  } else
-        if (stepNumber > 8) {
-            status = `Dead heat, no winner!`;
-        }
-            else {
-                status = `Next player: ${xIsNext ? "X" : "O"}`;
-            }
+    } else {
+      status = `Next player: ${xIsNext ? "X" : "O"}`;
+  }
+
+  if (winner?.draw) {
+      status = `Dead heat, no winner!`;
+  }
 
   return (
     <div className="game">

@@ -13,16 +13,21 @@ function calculateWinner(squares) {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        const obj = {
+        return {
           winner: squares[a],
           [a]: true,
           [b]: true,
           [c]: true
-        };
-        return obj; //return object
+        };      //return win object
       }
     }
-    return null;
+    if (squares.indexOf(null) === -1) {
+      return {draw: true};  //return draw object
+    }
+      else {
+        return null;  //return no win object
+      }
+    
   }
   export default calculateWinner;
   
