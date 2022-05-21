@@ -35,6 +35,7 @@ const Board = ({ squares, winnerLine, onClick }) => {
 
 Board.propTypes = {
   squares: PropTypes.arrayOf(PropTypes.oneOf(["X", "O", null])).isRequired,
+  winnerLine: PropTypes.arrayOf(PropTypes.number),
   onClick: PropTypes.func.isRequired,
 };
 
