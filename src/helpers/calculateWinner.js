@@ -15,19 +15,11 @@ function calculateWinner(squares) {
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         return {
           winner: squares[a],
-          [a]: true,
-          [b]: true,
-          [c]: true
+          line: [a, b, c]
         };      //return win object
       }
     }
-    if (squares.indexOf(null) === -1) {
-      return {draw: true};  //return draw object
-    }
-      else {
-        return null;  //return no win object
-      }
-    
-  }
+    return null;  //return no win object
+}
   export default calculateWinner;
   

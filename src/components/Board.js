@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 
 import Square from "./Square";
 
-const Board = ({ squares, winnerId, onClick }) => {
+const Board = ({ squares, winnerLine, onClick }) => {
   const renderSquare = (index) => {
     return <Square 
       value={squares[index]}
-      winValue = {winnerId ? winnerId[index] : ""}
+      isWinner = {winnerLine?.includes(index)} // check win index in array
       onClick={() => onClick(index)} />;
   };
 

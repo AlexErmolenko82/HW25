@@ -38,8 +38,8 @@ const Game = () => {
   const jumpTo = (step) => () => {
     setStepNumber(step);
     setXisNext(step % 2 === 0);
-    // clear winner object
-    if (winner) {  
+
+    if (winner) {      // clear winner object
       for (const prop of Object.getOwnPropertyNames(winner)) {
         delete winner[prop];
       }
@@ -52,18 +52,17 @@ const Game = () => {
   let status;
   if (winner?.winner) {
     status = `Winner: Player ${winner.winner}`;
-    } else {
+    } else if (stepNumber < 9){
       status = `Next player: ${xIsNext ? "X" : "O"}`;
-  }
-
-  if (winner?.draw) {
-      status = `Dead heat, no winner!`;
-  }
+      }
+      else {
+        status = `Dead heat, no winner!`;
+      } 
 
   return (
     <div className="game">
       <div className="game-board">
-        <Board squares={current.squares} winnerId={winner} onClick={handleClick} />
+        <Board squares={current.squares} winnerLine={winner?.line} onClick={handleClick} />
       </div>
         <GameInfo status = {status} history = {history} jumpTo = {jumpTo} />
     </div>
