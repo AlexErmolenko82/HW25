@@ -38,22 +38,20 @@ const Game = () => {
   const jumpTo = (step) => () => {
     setStepNumber(step);
     setXisNext(step % 2 === 0);
-    document.querySelectorAll(".square-win").forEach(list => { // remove winner squares
-      list.classList.remove("square-win");
-      });
+    // clear winner object
+    if (winner) {  
+      for (const prop of Object.getOwnPropertyNames(winner)) {
+        delete winner[prop];
+      }
+    }
   };
 
   const current = history[stepNumber];
-  const winner = calculateWinner(current.squares); // winner is Array
+  const winner = calculateWinner(current.squares); // winner is object
 
   let status;
-  if (winner) {
-    status = `Winner: Player ${winner[0]}`;
-    // mark winner squares
-    document.getElementById(winner[1]).classList.add("square-win");
-    document.getElementById(winner[2]).classList.add("square-win");
-    document.getElementById(winner[3]).classList.add("square-win");
-
+  if (winner?.winner) {
+    status = `Winner: Player ${winner.winner}`;
   } else
         if (stepNumber > 8) {
             status = `Dead heat, no winner!`;
@@ -65,7 +63,7 @@ const Game = () => {
   return (
     <div className="game">
       <div className="game-board">
-        <Board squares={current.squares} onClick={handleClick} />
+        <Board squares={current.squares} winnerId={winner} onClick={handleClick} />
       </div>
         <GameInfo status = {status} history = {history} jumpTo = {jumpTo} />
     </div>

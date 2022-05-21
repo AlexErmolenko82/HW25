@@ -2,9 +2,12 @@ import PropTypes from "prop-types";
 
 import Square from "./Square";
 
-const Board = ({ squares, onClick }) => {
+const Board = ({ squares, winnerId, onClick }) => {
   const renderSquare = (index) => {
-    return <Square value={squares[index]} id={index} onClick={() => onClick(index)} />;
+    return <Square 
+      value={squares[index]}
+      winValue = {winnerId ? winnerId[index] : ""}
+      onClick={() => onClick(index)} />;
   };
 
   return (

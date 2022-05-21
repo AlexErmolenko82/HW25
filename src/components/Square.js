@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
-const Square = ({ value, id, onClick }) => (
-  <button id = {id} className="square" onClick={onClick}>
+const Square = ({ value, winValue, onClick }) => (
+  <button className={`square ${(value && winValue) ? "square-win" : ""}`} onClick={onClick}>
     {value}
   </button>
 );
