@@ -7,8 +7,8 @@ import GameInfo from "./GameInfo";
 const Game = () => {
   const [history, setHistory] = useState([
     {
-      squares: Array(9).fill(null)
-    }
+      squares: Array(9).fill(null),
+    },
   ]);
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setXisNext] = useState(true);
@@ -28,8 +28,8 @@ const Game = () => {
     setHistory([
       ...newHistory,
       {
-        squares
-      }
+        squares,
+      },
     ]);
     setStepNumber(newHistory.length);
     setXisNext(!xIsNext);
@@ -39,7 +39,8 @@ const Game = () => {
     setStepNumber(step);
     setXisNext(step % 2 === 0);
 
-    if (winner) {      // clear winner object
+    if (winner) {
+      // clear winner object
       for (const prop of Object.getOwnPropertyNames(winner)) {
         delete winner[prop];
       }
@@ -52,19 +53,22 @@ const Game = () => {
   let status;
   if (winner?.winner) {
     status = `Winner: Player ${winner.winner}`;
-    } else if (stepNumber < 9){
-      status = `Next player: ${xIsNext ? "X" : "O"}`;
-      }
-      else {
-        status = `Dead heat, no winner!`;
-      } 
+  } else if (stepNumber < 9) {
+    status = `Next player: ${xIsNext ? "X" : "O"}`;
+  } else {
+    status = `Dead heat, no winner!`;
+  }
 
   return (
     <div className="game">
       <div className="game-board">
-        <Board squares={current.squares} winnerLine={winner?.line} onClick={handleClick} />
+        <Board
+          squares={current.squares}
+          winnerLine={winner?.line}
+          onClick={handleClick}
+        />
       </div>
-        <GameInfo status = {status} history = {history} jumpTo = {jumpTo} />
+      <GameInfo status={status} history={history} jumpTo={jumpTo} />
     </div>
   );
 };

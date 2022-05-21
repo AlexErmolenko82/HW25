@@ -4,12 +4,14 @@ import Square from "./Square";
 
 const Board = ({ squares, winnerLine, onClick }) => {
   const renderSquare = (index) => {
-    return <Square 
-      value={squares[index]}
-      isWinner = {winnerLine?.includes(index)} // check win index in array
-      onClick={() => onClick(index)} />;
+    return (
+      <Square
+        value={squares[index]}
+        isWinner={winnerLine?.includes(index)} // check win index in array
+        onClick={() => onClick(index)}
+      />
+    );
   };
-
   return (
     <div>
       <div className="board-row">
@@ -33,7 +35,7 @@ const Board = ({ squares, winnerLine, onClick }) => {
 
 Board.propTypes = {
   squares: PropTypes.arrayOf(PropTypes.oneOf(["X", "O", null])).isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Board;
