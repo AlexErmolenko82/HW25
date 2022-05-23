@@ -38,12 +38,12 @@ const Game = () => {
   const jumpTo = (step) => () => {
     setStepNumber(step);
     setXisNext(step % 2 === 0);
-    current = history[stepNumber];
-    winner = calculateWinner(current.squares); // refresh win obj after jump
+    winner.winner = false;
+    winner.line = []; // refresh win obj after jump
   };
 
-  let current = history[stepNumber];
-  let winner = calculateWinner(current.squares); // winner is object
+  const current = history[stepNumber];
+  const winner = calculateWinner(current.squares); // winner is object
 
   let status;
   if (winner.winner) {
