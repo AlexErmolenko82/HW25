@@ -19,7 +19,7 @@ const Game = () => {
     const squares = [...current.squares];
 
     const isWinner = calculateWinner(squares);
-    if (squares[index] || isWinner.winner) {
+    if (squares[index] || isWinner.info) {
       return;
     }
 
@@ -38,16 +38,14 @@ const Game = () => {
   const jumpTo = (step) => () => {
     setStepNumber(step);
     setXisNext(step % 2 === 0);
-    winner.winner = false;
-    winner.line = []; // refresh win obj after jump
   };
 
   const current = history[stepNumber];
   const winner = calculateWinner(current.squares); // winner is object
 
   let status;
-  if (winner.winner) {
-    status = `Winner: Player ${winner.winner}`;
+  if (winner.info) {
+    status = `Winner: Player ${winner.info}`;
   } else if (stepNumber < 9) {
     status = `Next player: ${xIsNext ? "X" : "O"}`;
   } else {
