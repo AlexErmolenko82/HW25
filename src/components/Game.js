@@ -19,7 +19,7 @@ const Game = () => {
     const squares = [...current.squares];
 
     const isWinner = calculateWinner(squares);
-    if (squares[index] || isWinner) {
+    if (squares[index] || isWinner.winner) {
       return;
     }
 
@@ -38,20 +38,15 @@ const Game = () => {
   const jumpTo = (step) => () => {
     setStepNumber(step);
     setXisNext(step % 2 === 0);
-
-    if (winner) {
-      // clear winner object
-      for (const prop of Object.getOwnPropertyNames(winner)) {
-        delete winner[prop];
-      }
-    }
+    current = history[stepNumber];
+    winner = calculateWinner(current.squares); // refresh win obj after jump
   };
 
-  const current = history[stepNumber];
-  const winner = calculateWinner(current.squares); // winner is object
+  let current = history[stepNumber];
+  let winner = calculateWinner(current.squares); // winner is object
 
   let status;
-  if (winner?.winner) {
+  if (winner.winner) {
     status = `Winner: Player ${winner.winner}`;
   } else if (stepNumber < 9) {
     status = `Next player: ${xIsNext ? "X" : "O"}`;
@@ -64,7 +59,7 @@ const Game = () => {
       <div className="game-board">
         <Board
           squares={current.squares}
-          winnerLine={winner?.line}
+          winnerLine={winner.winner ? winner.line : []}
           onClick={handleClick}
         />
       </div>

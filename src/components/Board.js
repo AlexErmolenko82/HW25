@@ -7,7 +7,7 @@ const Board = ({ squares, winnerLine, onClick }) => {
     return (
       <Square
         value={squares[index]}
-        isWinner={winnerLine?.includes(index)} // check win index in array
+        isWinner={winnerLine.includes(index)} // check win index in array
         onClick={() => onClick(index)}
       />
     );

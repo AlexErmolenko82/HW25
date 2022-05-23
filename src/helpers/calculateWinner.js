@@ -19,6 +19,9 @@ function calculateWinner(squares) {
       }; //return win object
     }
   }
-  return null; //return no win object
+  return {
+    winner: false,
+    line: [],
+  }; //return no win object
 }
 export default calculateWinner;
