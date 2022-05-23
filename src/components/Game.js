@@ -51,7 +51,7 @@ const Game = () => {
   } else if (stepNumber < 9) {
     status = `Next player: ${xIsNext ? "X" : "O"}`;
   } else {
-    status = `Dead heat, no winner!`;
+    status = `Draw result, no winner!`;
   }
 
   return (
@@ -59,7 +59,7 @@ const Game = () => {
       <div className="game-board">
         <Board
           squares={current.squares}
-          winnerLine={winner.winner ? winner.line : []}
+          winnerLine={winner.line}
           onClick={handleClick}
         />
       </div>
